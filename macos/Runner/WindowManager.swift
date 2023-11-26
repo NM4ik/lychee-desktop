@@ -14,6 +14,9 @@ public class MacOsPlatformPlugin: NSObject {
     
     init(flutterViewController: FlutterViewController) {
         self.flutterViewController = flutterViewController
+        super.init()
+        handle()
+        
     }
     
     
