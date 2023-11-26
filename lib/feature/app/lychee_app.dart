@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lychee_desktop/core/os_info/os_info.dart';
 import 'package:lychee_desktop/native/macOsPlugin/macos_window_manager.dart';
+import 'package:lychee_desktop/utils/theme/theme.dart';
 import 'package:lychee_desktop/widgets/os_version.dart';
 
 class LycheeApp extends StatefulWidget {
@@ -28,19 +29,17 @@ class _LycheeAppState extends State<LycheeApp> {
     setState(() {});
   }
 
+  bool _isDark = false;
+
+  final AppTheme _appTheme = AppTheme();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'App Title',
-      theme: ThemeData(
-        brightness: Brightness.light,
-        /* light theme settings */
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        /* dark theme settings */
-      ),
-      themeMode: ThemeMode.dark,
+      theme: _appTheme.themeLight,
+      darkTheme: _appTheme.themeDark,
+      themeMode: _isDark ? ThemeMode.dark : ThemeMode.light,
       /* ThemeMode.system to follow system theme, 
          ThemeMode.light for light theme, 
          ThemeMode.dark for dark theme
@@ -51,16 +50,19 @@ class _LycheeAppState extends State<LycheeApp> {
           children: [
             ElevatedButton(
               onPressed: () {
-                MacOSPlugin.setWindowMinSize(Size(600, 600));
+                setState(() {
+                  _isDark = true;
+                });
               },
-              child: Text('setMin'),
+              child: Text('toDark'),
             ),
-
-             ElevatedButton(
+            ElevatedButton(
               onPressed: () {
-                MacOSPlugin.setWindowSize(Size(1200, 1200), animate: true);
+                setState(() {
+                  _isDark = false;
+                });
               },
-              child: Text('setSize'),
+              child: Text('toLight'),
             ),
             OSInfoWidget(
               osInfo: OSInfo.osInfoName,

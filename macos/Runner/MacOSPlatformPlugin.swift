@@ -21,7 +21,7 @@ public class MacOsPlatformPlugin: NSObject {
     
     
     func handle() {
-        let channel = FlutterMethodChannel(name: "MacOSPlatformPlugin", binaryMessenger:  flutterViewController.engine.binaryMessenger)
+        let channel = FlutterMethodChannel(name: "com.mikhailov.MacOSPlatformPlugin", binaryMessenger:  flutterViewController.engine.binaryMessenger)
         
         channel.setMethodCallHandler({
             (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in

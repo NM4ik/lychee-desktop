@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 
 class MacOSPlugin {
-  static const _methodChannel = MethodChannel('MacOSPlatformPlugin');
+  static const _methodChannel = MethodChannel('com.mikhailov.MacOSPlatformPlugin');
 
   static Future<String?> getOSInfo() async {
     final osInfo = await _methodChannel.invokeMethod('getOSInfo');
