@@ -16,7 +16,6 @@ public class MacOsPlatformPlugin: NSObject {
         self.flutterViewController = flutterViewController
         super.init()
         handle()
-        
     }
     
     
@@ -42,6 +41,7 @@ public class MacOsPlatformPlugin: NSObject {
         })
     }
     
+    
     private func getOSInfo() -> String {
         return ProcessInfo.processInfo.operatingSystemVersionString
     }
@@ -61,9 +61,10 @@ public class MacOsPlatformPlugin: NSObject {
             window.animator().setFrame(rect, display: true, animate: animate)
             
             return true
-        } else {
-            return false
         }
+        
+        return false
+        
     }
     
     private func setWindowMinSize(args: Any?) -> Bool {

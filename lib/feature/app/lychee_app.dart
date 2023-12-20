@@ -53,6 +53,8 @@ class _LycheeAppState extends State<LycheeApp> {
                 setState(() {
                   _isDark = true;
                 });
+
+                MacOSPlugin.setWindowMinSize(Size(500, 500));
               },
               child: Text('toDark'),
             ),
@@ -61,6 +63,8 @@ class _LycheeAppState extends State<LycheeApp> {
                 setState(() {
                   _isDark = false;
                 });
+                MacOSPlugin.setWindowSize(Size(1200, 1200));
+
               },
               child: Text('toLight'),
             ),
